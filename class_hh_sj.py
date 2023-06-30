@@ -78,9 +78,9 @@ class SuperJob(API):
 
     def __init__(self, keyword):
         self.params = {
-            "per_page": 100,
+            "count": 100,
             "page": None,
-            "text": keyword,
+            "keyword": keyword,
             "archived": False
         }
         self.headers = {"Host": "api.superjob.ru",
@@ -93,7 +93,7 @@ class SuperJob(API):
 
     def get_request(self):
         response = requests.get(self.url, headers=self.headers, params=self.params)
-        return response.json()
+        return response.json()["objects"]
 
     def get_vacancies(self, pages_count=2):
         self.vacancies = []

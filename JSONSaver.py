@@ -22,6 +22,4 @@ class JSONSaver:
             "< - ASC \n>>> "
         ).lower() == ">" else False
         vacancies = self.select()
-        return sorted(vacancies,
-                      key=lambda x: (x.salary_from if x.salary_from else 0, x.salary_to if x.salary_to else 0),
-                      reverse=desc)
+        return sorted(vacancies, reverse=desc)
